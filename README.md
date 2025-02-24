@@ -1,17 +1,29 @@
 ## Rate limiter mancante
 
 ### Scenario:
-Creare ed eseguire uno script (es. in bash con curl) che lancia moltissime richieste sulla stessa rotta con il pericolo di un denial of service
+Creare ed eseguire uno script (es. in bash con curl) che lancia moltissime richieste sulla stessa rotta con il pericolo di un denial of service: 
+ho eseguito 
+## ATTACCO: 
+1. scheda terminale windows bash aperta con il server PHP 8.3.12 Development Server (http://localhost:8002) in esecuzione per simulare la macchina dell'attacker;
 
-### Mitigazione:
+2. scheda terminale dove mi posiziono in XXX-AttackTools e lancio lo script "for i in {1..1000}; do curl -X GET http://external.user:8000/articles/search & done" --> mi restituisce moltissime richieste;
+
+3. ultima scheda terminale dove ho lanciato il comando $ php artisan serve --host=cyber.blog --port=8000 
+ed è in esecuzione. qui si vedono le richieste generate dallo script. 
+Conseguenza: Da Gestione attività, vedo che l'attività della CPU aumenta notevolmente, oltre al rumore fisico del PC, inoltre si blocca il sito web come screenshot nella cartella XXX-AttackTools/dos/screenshot/dos riuscito.png
+
+### MITIGAZIONE:
 - Rate limiter su /careers/submit
 - Rate limiter su /article/search
 - Rate limiter globale
 
+
+
+
 ## Logging mancante per operazioni critiche
 
 ### Scenario:
-Sui tentativi precedenti di DoS non si può risalire al colpevole violando il principiio di accountability e no repudiation
+Sui tentativi precedenti di DoS non si può risalire al colpevole violando il principio di accountability e no repudiation
 
 ### Mitigazione:
 Log di:

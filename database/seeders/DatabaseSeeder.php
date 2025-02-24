@@ -17,7 +17,7 @@ class DatabaseSeeder extends Seeder
         // User::factory(10)->create();
 
         // Crea un utente senza ruolo
-        User::create([
+        User::firstOrCreate([
             'name' => 'Steven Manson (User)',
             'email' => 'user@aulab.it',
             'password' => Hash::make('password'),
@@ -27,7 +27,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         // Crea un utente con ruolo writer
-        User::create([
+        User::firstOrCreate([
             'name' => "Daria Richardson (Writer)",
             'email' => 'writer@aulab.it',
             'password' => Hash::make('password'),
@@ -37,7 +37,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         // Crea un utente con ruolo revisor
-        User::create([
+        User::firstOrCreate([
             'name' => "Antony Delgado (Revisor)",
             'email' => 'revisor@aulab.it',
             'password' => Hash::make('password'),
@@ -47,7 +47,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         // Crea un amministratore
-        User::create([
+        User::firstOrCreate([
             'name' => 'Steve Lorren (Admin)',
             'email' => 'admin@aulab.it',
             'password' => Hash::make('password'),
@@ -57,7 +57,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         // Crea un super amministratore con tutti i ruoli
-        User::create([
+        User::firstOrCreate([
             'name' => "Mario Bianchi (Super admin)",
             'email' => 'super.admin@aulab.it',
             'password' => Hash::make('password'),
@@ -66,7 +66,7 @@ class DatabaseSeeder extends Seeder
             'is_admin' => true,
         ]);
         // Crea un super amministratore con tutti i ruoli
-        User::create([
+        User::firstOrCreate([
             'name' => "Kevin Ross (Attacker)",
             'email' => 'kvrs@gmail.com',
             'password' => Hash::make('password'),
