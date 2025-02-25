@@ -17,8 +17,8 @@ Conseguenza: Da Gestione attività, vedo che l'attività della CPU aumenta notev
 - Rate limiter su /article/search
 - Rate limiter globale
 
-
-
+CONCLUSIONE: inserito il rate limiter locale sulla rotta http://external.user:8000/articles/search e globale, e creato il midlleware app/Http/Middleware/RateLimit.php
+Implementando di nuovo l'attacco, la pagina browser restituisce l'errore 429 - too many requests, e i log mostrano le richieste bloccate dal rate limiter, come da screenshot in allegato nella cartella XXX-AttackTools/dos/screenshot/dos riuscito.png 
 
 ## Logging mancante per operazioni critiche
 
