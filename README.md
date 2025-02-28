@@ -1,4 +1,4 @@
-## Rate limiter mancante
+## SELFWORK 1: Rate limiter mancante
 
 ### Scenario:
 Creare ed eseguire uno script (es. in bash con curl) che lancia moltissime richieste sulla stessa rotta con il pericolo di un denial of service: 
@@ -20,7 +20,8 @@ Conseguenza: Da Gestione attività, vedo che l'attività della CPU aumenta notev
 CONCLUSIONE: inserito il rate limiter locale sulla rotta http://external.user:8000/articles/search e globale, e creato il midlleware app/Http/Middleware/RateLimit.php
 Implementando di nuovo l'attacco, la pagina browser restituisce l'errore 429 - too many requests, e i log mostrano le richieste bloccate dal rate limiter, come da screenshot in allegato nella cartella XXX-AttackTools/dos/screenshot/dos riuscito.png 
 
-## Logging mancante per operazioni critiche
+
+## SELFWORK 2: Logging mancante per operazioni critiche
 
 ### Scenario:
 Sui tentativi precedenti di DoS non si può risalire al colpevole violando il principio di accountability e no repudiation
@@ -31,7 +32,14 @@ Log di:
 - creazione/modifica/eliminazione articolo
 - assegnazione/cambi di ruolo
 
-## Operazioni critiche in post e non in get
+appunti: 
+- i log in laravel vengono gestiti dalla libreria Monolog, impostati in config/logging.php 
+- ci sono log "normali" o con processor (più automatizzati e valgono globalmente) 
+- i processor "controllano" le richieste e aggiungono informazioni a quelle raccolte prima di salvare il log 
+- quando imposti in logging.php i log o i processor indichi il file o il canale dove andrà salvato il log 
+
+
+## SELFWORK 3: Operazioni critiche in post e non in get
 
 ### Scenario: 
 Ci si espone a possibili attacchi CSRF portando in questo caso ad una vertical escalation of privileges.
@@ -40,7 +48,9 @@ Provare un attacco csrf creando un piccolo server php che visualizzi una pagina 
 ### Mitigazione
 Cambiare da get a post, facendo i dovuti controlli
 
-## Uso non corretto di fillable nei modelli
+
+
+## SELFWORK 4: Uso non corretto di fillable nei modelli
 
 ### Scenario 
 Un utente malevolo può provare a indovinare campi tipici di ruoli utente tipo isAdmin, is_admin etc.. alterando il form dal browser 
@@ -48,7 +58,9 @@ Un utente malevolo può provare a indovinare campi tipici di ruoli utente tipo i
 ### Mitigazione
 Nella proprietà fillable del modello in questione inserire tutti solo i campi gestiti nel form
 
-## ssrf attack per api delle news
+
+
+## SELFWORK 5: ssrf attack per api delle news
 
 ### Scenario
 Esiste la funzionalità di suggerimento news recenti in fase di scrittura dell'articolo per prendere ispirazione. E' presente un menu a scelta facilmente alterabile da ispeziona elemento. L'utente malintenzionato con un minimo di conoscenza del sistema cambia l'url e prova a far lanciare al server una richiesta che lui non sarebbe autorizzato.
@@ -61,7 +73,9 @@ Rimodellare la funzionalità in modo tale da non poter lasciare spazio di modifi
 https://newsapi.org/docs/endpoints/top-headlines
 NewsAPI - api key 5fbe92849d5648eabcbe072a1cf91473
 
-## Stored XSS Attack
+
+
+## SELFWORK 6: Stored XSS Attack
 
 ### Scenario
 Durante la creazione di un articlo si può manomettere il body della richiesta con un tool tipo burpsuite in modalità proxy in modo da evitare l'auto escape eseguito dall'editor stesso e far arrivare alla funzionalità di creazione articolo uno script malevelo nel testo.
