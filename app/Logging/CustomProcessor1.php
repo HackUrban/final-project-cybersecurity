@@ -15,8 +15,6 @@ class CustomProcessor1 implements ProcessorInterface
         $record['extra']['timestamp'] = date('Y-m-d H:i:s');
         $record['extra']['log_level'] = $record['level_name'];
 
-
-
         return $record;
     }
-}
+} 
