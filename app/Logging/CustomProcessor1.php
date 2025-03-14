@@ -3,6 +3,7 @@
 namespace App\Logging;
 
 use Monolog\Processor\ProcessorInterface;
+use Illuminate\Support\Facades\Auth;
 
 class CustomProcessor1 implements ProcessorInterface
 {
@@ -10,11 +11,9 @@ class CustomProcessor1 implements ProcessorInterface
     {
         $record['extra']['ip'] = request()->ip();
         $record['extra']['url'] = request()->fullUrl();
-        $record['extra']['user_agent'] = request()->header('User-Agent');
-        $record['extra']['user'] = auth()->user();
-        $record['extra']['timestamp'] = date('Y-m-d H:i:s');
-        $record['extra']['log_level'] = $record['level_name'];
+        $record['extra']['email'] = Auth::check() ? Auth::user()->email : 'guest';
+        $record['extra']['timestamp'] = now()->toDateTimeString();
 
-        return $record;
-    }
+        return $record; 
+    } 
 } 

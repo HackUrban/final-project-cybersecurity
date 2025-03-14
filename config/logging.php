@@ -18,7 +18,7 @@ return [
     |
     */
 
-    'default' => env('LOG_CHANNEL', 'stack'),
+    'default' => env('LOG_CHANNEL', 'stack'), 
 
     /*
     |--------------------------------------------------------------------------
@@ -34,7 +34,7 @@ return [
     'deprecations' => [
         'channel' => env('LOG_DEPRECATIONS_CHANNEL', 'null'),
         'trace' => env('LOG_DEPRECATIONS_TRACE', false),
-    ],
+    ], 
 
     /*
     |--------------------------------------------------------------------------
@@ -127,6 +127,15 @@ return [
             'path' => storage_path('logs/laravel.log'),
         ],
 
+        'custom_routes' => [
+            'driver' => 'monolog',
+            'handler' => StreamHandler::class,
+            'handler_with' => [
+                'stream' => storage_path('logs/custom_routes.log'),
+            ],
+            'processors' => [
+                App\Logging\CustomProcessor1::class,
+            ],
+        ],
     ],
-
 ];

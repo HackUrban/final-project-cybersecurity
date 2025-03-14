@@ -38,6 +38,15 @@ appunti:
 - i processor "controllano" le richieste e aggiungono informazioni a quelle raccolte prima di salvare il log 
 - quando imposti in logging.php i log o i processor indichi il file o il canale dove andrà salvato il log 
 
+## 14/03 
+creato il middleware LogCustomRoutes; devi inserire i path delle 3 routes da verificare 
+
++ dopo valuta soluzione globale con un processor, magari che raccolga meno info per non spammare logging.php 
+[vedi chat gpt per processo] 
+
+// primo errore: bloccato processo per errore in php artisan serve: non si visualizza la pagina in broswer ma solo routes con "formatta il codice"
+
+//secondo errore: Log classe non riconosciuta 
 
 ## SELFWORK 3: Operazioni critiche in post e non in get
 
