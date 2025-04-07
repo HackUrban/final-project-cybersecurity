@@ -21,13 +21,15 @@ class RateLimit
         Log::info('Request from IP: ' . $request->ip());
         $key = $this->resolveRequestSignature($request);
         $maxAttempts = 5; // Cambio il numero di tentativi consentiti
+        $decaySeconds = 60; // 1 minuto di finestra temporale 
 
         if (RateLimiter::tooManyAttempts($key, $maxAttempts)) {
+            Log::info('Rate limit exceeded for IP: ' . $request->ip());
             abort(429); // Mostro la pagina di errore Laravel 429
         }
     
-        RateLimiter::hit($key); // Conto la richiesta
-    
+        RateLimiter::hit($key, $decaySeconds);
+        return $next($request); 
         return response()->json(['message' => 'Request OK']);
     }
     private function resolveRequestSignature(Request $request)
