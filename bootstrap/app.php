@@ -19,7 +19,8 @@ return Application::configure(basePath: dirname(__DIR__))
             'revisor' => App\Http\Middleware\UserIsRevisor::class,
             'writer' => App\Http\Middleware\UserIsWriter::class,
             'admin.local'=> App\Http\Middleware\OnlyLocalAdmin::class,
-            'rate.limit'=>App\Http\Middleware\RateLimit::class
+            'rate.limit'=>App\Http\Middleware\RateLimit::class, 
+            'log.custom'=>App\Http\Middleware\LogCustomRoutes::class // aggiunto middleware per loggare solo rotte specifiche 
 
         ]);
     })

@@ -4,7 +4,8 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
-use Symfony\Component\HttpFoundation\Response;
+// use Symfony\Component\HttpFoundation\Response;
+use Illuminate\Support\Facades\Log;
 
 
 
@@ -15,14 +16,31 @@ class LogCustomRoutes
      *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
-    public function handle(Request $request, Closure $next): Response
+    public function handle(Request $request, Closure $next)
     
     {
         // Elenco delle rotte da loggare
         $routesToLog = [
-            'route-name-1',
-            'route-name-2',
-            'route-name-3',
+            'homepage',
+            'careers',
+            'careers.submit',
+            'articles.create',
+            'articles.store',
+            'writer.dashboard',
+            'articles.edit',
+            'articles.update',
+            'articles.destroy',
+            'admin.dashboard',
+            'admin.setAdmin',
+            'admin.setRevisor',
+            'admin.setWriter',
+            'admin.editTag',
+            'admin.deleteTag',
+            'admin.editCategory',
+            'admin.deleteCategory',
+            'admin.storeCategory',
+            'admin.storeTag'
+
         ];
 
         if (in_array($request->route()->getName(), $routesToLog)) {

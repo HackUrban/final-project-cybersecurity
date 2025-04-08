@@ -38,5 +38,5 @@ class RateLimit
             return Str::lower($user->email);
         }
         return $request->ip();
-    }
+    } 
 }
