@@ -57,6 +57,8 @@ Provare un attacco csrf creando un piccolo server php che visualizzi una pagina 
 ### Mitigazione
 Cambiare da get a post, facendo i dovuti controlli
 
+##maria: vedi chat "Simulazione rete e CSRF" ultima domanda 
+
 
 
 ## SELFWORK 4: Uso non corretto di fillable nei modelli
@@ -93,5 +95,3 @@ Supponiamo che ci sia una misconfiguration a livello di CORS (config/cors.php) c
 
 ### Mitigazione
 Creare un meccanismo che filtri il testo prima di salvarlo e per essere sicuri anche in fase di visualizzazione dell'articolo.
-
-CIAO CIAO PROVA PROVA HELLO 

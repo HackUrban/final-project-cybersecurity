@@ -17,14 +17,17 @@ class DatabaseSeeder extends Seeder
         // User::factory(10)->create();
 
         // Crea un utente senza ruolo
-        User::firstOrCreate([
-            'name' => 'Steven Manson (User)',
-            'email' => 'user@aulab.it',
-            'password' => Hash::make('password'),
-            'is_writer' => false,
-            'is_revisor' => false,
-            'is_admin' => false,
-        ]);
+        User::firstOrCreate(
+            ['email' => 'user@aulab.it'],
+            // ! questa separazione di array devo farla per ogni user ? 
+            [
+                'name' => 'Steven Manson (User)',
+                'password' => Hash::make('password'),
+                'is_writer' => false,
+                'is_revisor' => false,
+                'is_admin' => false,
+            ]
+        );
 
         // Crea un utente con ruolo writer
         User::firstOrCreate([
