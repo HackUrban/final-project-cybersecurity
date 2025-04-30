@@ -57,7 +57,6 @@ Provare un attacco csrf creando un piccolo server php che visualizzi una pagina 
 ### Mitigazione
 Cambiare da get a post, facendo i dovuti controlli
 
-##maria: vedi chat "Simulazione rete e CSRF" ultima domanda 
 
 
 

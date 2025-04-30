@@ -7,6 +7,9 @@ use App\Http\Controllers\WriterController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\RevisorController;
 use App\Http\Controllers\SecurityController;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Response;
+
 
 // Public routes
 Route::get('/', [PublicController::class, 'homepage'])->name('homepage');
@@ -51,4 +54,3 @@ Route::middleware(['admin','admin.local'])->group(function(){
     Route::post('/admin/category/store', [AdminController::class, 'storeCategory'])->name('admin.storeCategory');
     Route::post('/admin/tag/store', [AdminController::class, 'storeTag'])->name('admin.storeTag');
 });
-

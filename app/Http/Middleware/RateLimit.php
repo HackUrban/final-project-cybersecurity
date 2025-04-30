@@ -20,7 +20,7 @@ class RateLimit
     {
         Log::info('Request from IP: ' . $request->ip());
         $key = $this->resolveRequestSignature($request);
-        $maxAttempts = 5; // Cambio il numero di tentativi consentiti
+        $maxAttempts = 15; // Cambio il numero di tentativi consentiti
         $decaySeconds = 60; // 1 minuto di finestra temporale 
 
         if (RateLimiter::tooManyAttempts($key, $maxAttempts)) {
@@ -38,5 +38,5 @@ class RateLimit
             return Str::lower($user->email);
         }
         return $request->ip();
-    } 
+    }
 }
