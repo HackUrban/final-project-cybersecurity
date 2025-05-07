@@ -57,8 +57,17 @@ Provare un attacco csrf creando un piccolo server php che visualizzi una pagina 
 ### Mitigazione
 Cambiare da get a post, facendo i dovuti controlli
 
+## ATTACCO: 
+1. ho implementato l'attacco disattivando i middleware già presenti in routes/web.php per le rotte vulnerabili ('admin', 'admin.local');
+2. ho copiato il file XXX-AttackTools/csrf/index.html in public/csrf/index.html per renderla visibile al browser
+3. all'interno di public/csrf/index.html ho modificato: 
+- il link della pagina di distrazione in http://cyber.blog:8000/csrf/index.html
+- il link di redirect per far scattare la funzione onclick in http://cyber.blog:8000/admin/2/set-admin 
+- nel link di redirect ho inserito utente 2 cioè user@aulab.it [ id corrisponde al record dell'utente nel database locale ] 
+- ho usato cyber.blog come server per far andare a buon fine l'attacco sulla stessa rete 
+4. ho cercato direttamente nel browser la pagina http://cyber.blog:8000/csrf/index.html , senza compiere alcuna azione dopo 5s il browser ti reindirizza sulla rotta http://cyber.blog:8000/admin/2/set-admin e Steve Manson (user@aulab.it) guadagna privilegi admin e si modifica anche il record nel database, come da screenshot salvati in XXX-AttackTools/csrf/screenshot 
 
-
+[ ho risolto errori di chiave $users undefined in AdminController.php ]
 
 ## SELFWORK 4: Uso non corretto di fillable nei modelli
 

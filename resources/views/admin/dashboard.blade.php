@@ -65,39 +65,43 @@
         <div class="row justify-content-center">
             <div class="col-12">
                 
-                    <h2>Financial Data</h2>
-                    <table class="table table-striped table-hover">
-                        <thead class="table-dark">
-                            <tr>
-                                <th>Customer Name</th>
-                                <th>Account Balance</th>
-                                <th>Latest transactions</th>
-                                <th>Credit Card Info</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                          
-                            @foreach($financialData['users'] as $user)
-
-                                <tr>
-                                    <td>{{ $user['username'] }}</td>
-                                    <td>{{ $user['account_balance'] }}</td>
-                                    <td>
-                                        <ul>
-                                            @foreach($user['transactions'] as $transaction)
-                                                <li>{{ $transaction['date'] }}: {{ $transaction['description'] }} ({{ $transaction['amount'] }})</li>
-                                            @endforeach
-                                        </ul>
-                                    </td>
-                                    <td>
-                                        <p>Card number: {{ $user['credit_card']['card_number'] }}</p>
-                                        <p>Expire date: {{ $user['credit_card']['expiry_date'] }}</p>
-                                        <p>CVV: {{ $user['credit_card']['cvv'] }}</p>
-                                    </td>
-                                </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
+                <h2>Financial Data</h2>
+                <table class="table table-striped table-hover">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>Customer Name</th>
+                            <th>Account Balance</th>
+                            <th>Latest transactions</th>
+                            <th>Credit Card Info</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if(isset($financialData['users']) && is_array($financialData['users']))
+                        @foreach($financialData['users'] as $user)
+                        <tr>
+                            <td>{{ $user['username'] }}</td>
+                            <td>{{ $user['account_balance'] }}</td>
+                            <td>
+                                <ul>
+                                    @foreach($user['transactions'] as $transaction)
+                                    <li>{{ $transaction['date'] }}: {{ $transaction['description'] }} ({{ $transaction['amount'] }})</li>
+                                    @endforeach
+                                </ul>
+                            </td>
+                            <td>
+                                <p>Card number: {{ $user['credit_card']['card_number'] }}</p>
+                                <p>Expire date: {{ $user['credit_card']['expiry_date'] }}</p>
+                                <p>CVV: {{ $user['credit_card']['cvv'] }}</p>
+                            </td>
+                        </tr>
+                        @endforeach
+                        @else
+                        <tr>
+                            <td colspan="4" class="text-center">Nessun dato finanziario disponibile.</td>
+                        </tr>
+                        @endif
+                    </tbody>
+                </table>
                 
             </div>
         </div>
