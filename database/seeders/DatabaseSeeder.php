@@ -31,51 +31,61 @@ class DatabaseSeeder extends Seeder
 
         // Crea un utente con ruolo writer
         User::firstOrCreate([
-            'name' => "Daria Richardson (Writer)",
-            'email' => 'writer@aulab.it',
-            'password' => Hash::make('password'),
-            'is_writer' => true,
-            'is_revisor' => false,
-            'is_admin' => false,
+            ['email' => 'writer@aulab.it'],
+            [
+                'name' => "Daria Richardson (Writer)",
+                'password' => Hash::make('password'),
+                'is_writer' => true,
+                'is_revisor' => false,
+                'is_admin' => false,
+            ]
         ]);
 
         // Crea un utente con ruolo revisor
         User::firstOrCreate([
-            'name' => "Antony Delgado (Revisor)",
-            'email' => 'revisor@aulab.it',
-            'password' => Hash::make('password'),
-            'is_writer' => false,
-            'is_revisor' => true,
-            'is_admin' => false,
+            ['email' => 'revisor@aulab.it'],
+            [
+                'name' => "Antony Delgado (Revisor)",
+                'password' => Hash::make('password'),
+                'is_writer' => false,
+                'is_revisor' => true,
+                'is_admin' => false
+            ]
         ]);
 
         // Crea un amministratore
         User::firstOrCreate([
-            'name' => 'Steve Lorren (Admin)',
-            'email' => 'admin@aulab.it',
-            'password' => Hash::make('password'),
-            'is_writer' => false,
-            'is_revisor' => false,
-            'is_admin' => true,
+            ['email' => 'admin@aulab.it'],
+            [
+                'name' => 'Steve Lorren (Admin)',
+                'password' => Hash::make('password'),
+                'is_writer' => false,
+                'is_revisor' => false,
+                'is_admin' => true
+            ]
         ]);
 
         // Crea un super amministratore con tutti i ruoli
         User::firstOrCreate([
-            'name' => "Mario Bianchi (Super admin)",
-            'email' => 'super.admin@aulab.it',
-            'password' => Hash::make('password'),
-            'is_writer' => true,
-            'is_revisor' => true,
-            'is_admin' => true,
+            ['email' => 'super.admin@aulab.it'],
+            [
+                'name' => "Mario Bianchi (Super admin)",
+                'password' => Hash::make('password'),
+                'is_writer' => true,
+                'is_revisor' => true,
+                'is_admin' => true
+            ]
         ]);
         // Crea un super amministratore con tutti i ruoli
         User::firstOrCreate([
-            'name' => "Kevin Ross (Attacker)",
-            'email' => 'kvrs@gmail.com',
-            'password' => Hash::make('password'),
-            'is_writer' => false,
-            'is_revisor' => false,
-            'is_admin' => false,
+            ['email' => 'kvrs@gmail.com'],
+            [
+                'name' => "Kevin Ross (Attacker)",
+                'password' => Hash::make('password'),
+                'is_writer' => false,
+                'is_revisor' => false,
+                'is_admin' => false
+            ]
         ]);
     }
 }

