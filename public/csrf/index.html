@@ -86,7 +86,7 @@
 <!-- 1. entrare da browser sulla pagina iniziale solo perché gliel'ho fornita io: qual è il link? http://cyber.blog:8000/csrf/index.html
 2. non avere azioni dopo 5 secondi da solo ma rimanere sulla pagina iniziale fino a quando non fa click... 
 3. ...sul bottone SCOPRI IL TUO ORSETTO, per andare sulla pagina di distrazione cioè https://www.bornfree.org.uk/adopt/brown-bear 
-4. solo dopo inizia l'azione onclick di 5 secondi e reindirizza sulla rotta admin/2/set-admin, che però è protetta da da middleware admin 
+4. solo dopo inizia l'azione onclick di 5 secondi e reindirizza sulla rotta admin/3/set-admin, che però è protetta da da middleware admin 
 5. quindi bisognerebbe prima farlo diventare admin, poi reindirizzarlo sulla rotta admin/dashboard che a quel punto lo farà entrare
 6. 
 -->
@@ -104,7 +104,7 @@
         <a href="https://www.bornfree.org.uk/adopt/brown-bear" class="button" target="_blank">ADOTTAMI, E' GRATIS :)</a>
         <div id="message" class="message">Your new bear thanks you :)</div>
     </div>
-    <!-- http://cyber.blog:8000/csrf/index.html -->
+
     <script>
         setTimeout(() => {
             // Recupera il bottone e simula il click

@@ -19,7 +19,6 @@ class DatabaseSeeder extends Seeder
         // Crea un utente senza ruolo
         User::firstOrCreate(
             ['email' => 'user@aulab.it'],
-            // ! questa separazione di array devo farla per ogni user ? 
             [
                 'name' => 'Steven Manson (User)',
                 'password' => Hash::make('password'),
