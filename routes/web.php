@@ -6,6 +6,7 @@ use App\Http\Controllers\PublicController;
 use App\Http\Controllers\WriterController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\RevisorController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\SecurityController;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Response;
@@ -16,11 +17,19 @@ Route::get('/', [PublicController::class, 'homepage'])->name('homepage');
 Route::get('/careers', [PublicController::class, 'careers'])->name('careers');
 Route::post('/careers/submit', [PublicController::class, 'careersSubmit'])->name('careers.submit');
 
+
 Route::get('/articles/index', [ArticleController::class, 'index'])->name('articles.index');
 Route::get('/articles/show/{article:slug}', [ArticleController::class, 'show'])->name('articles.show');
 Route::get('/articles/category/{category}', [ArticleController::class, 'byCategory'])->name('articles.byCategory');
 Route::get('/articles/user/{user}', [ArticleController::class, 'byUser'])->name('articles.byUser');
 Route::get('/articles/search', [ArticleController::class, 'articleSearch'])->name('articles.search');
+
+//! Logged user routes
+Route::middleware('auth')->group(function(){
+    Route::get('/profile/edit', [UserController::class, 'index'])->name('profile.edit');
+    Route::put('profile/update/{user}', [UserController::class, 'updateUserProfile'])->name('profile.update');
+    Route::delete('/profile/delete/{user}', [UserController::class, 'deleteUserProfile'])->name('profile.delete');
+});
 
 // Writer routes
 Route::middleware('writer')->group(function(){
